@@ -1,0 +1,4 @@
+- name: Setup Timezone to Asia/Tokyo
+  timezone:
+    name: Asia/Tokyo
+  tags: os

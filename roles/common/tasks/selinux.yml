@@ -1,0 +1,6 @@
+- name: Disable SELinux
+  selinux:
+    state: disabled
+  register: result
+  failed_when: result.msg | default('ok', True) is not search('(^ok$|libselinux-python|(SELinux state changed))')
+  tags: os

@@ -1,0 +1,11 @@
+#- name: Sudoers Settings
+#  lineinfile:
+#    dest: /etc/sudoers.d/90-cloud-init-users
+#    regexp: "^{{ item.user_name }}\ ALL"
+#    line: "{{ item.user_name }} ALL=(ALL) NOPASSWD:ALL"
+#    state: present
+#    backup: yes
+#  ignore_errors: true
+#  with_items:
+#  - "{{ user_list }}"
+#  tags: os

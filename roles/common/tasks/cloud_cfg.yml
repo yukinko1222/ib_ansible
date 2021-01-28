@@ -1,0 +1,10 @@
+- name: Setup cloud.cfg
+  blockinfile:
+    dest: /etc/cloud/cloud.cfg
+    backup: yes
+    marker: "<!-- {mark} ANSIBLE MANAGED BLOCK -->"
+    content: |
+      repo_upgrade: none
+      locale: ja_JP.UTF-8
+#      preserve_hostname: true
+  tags: os

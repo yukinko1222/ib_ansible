@@ -1,0 +1,5 @@
+#- name: No Login ec2-user
+#  user:
+#    name: "ec2-user"
+#    shell: /bin/false
+#  tags: os

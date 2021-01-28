@@ -1,0 +1,10 @@
+- name: Install amzn2extra epel repository
+  shell: amazon-linux-extras install epel
+  changed_when: false
+  tags: os
+
+- name: Install mailx
+  yum:
+    name: mailx
+    state: present
+  tags: os

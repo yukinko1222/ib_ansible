@@ -1,0 +1,13 @@
+## ------------------------- ##
+## main task
+## ------------------------- ##
+- import_tasks: change_root_password.yml
+- import_tasks: locale.yml
+- import_tasks: timezone.yml
+- import_tasks: selinux.yml
+- import_tasks: cloud_cfg.yml
+- import_tasks: user_group.yml
+#- import_tasks: sudoers.yml
+- import_tasks: pkg_install.yml
+- import_tasks: logrotate.yml
+#-import_tasks: disabled_ec2-user.yml

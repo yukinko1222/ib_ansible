@@ -1,0 +1,4 @@
+- name: Setup Locale
+  shell: localectl set-locale LANG=ja_JP.utf8
+  changed_when: False
+  tags: os

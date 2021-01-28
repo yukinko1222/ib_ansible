@@ -1,0 +1,52 @@
+- name: create Group
+  group:
+    name: "{{ item.group_name }}"
+    gid: "{{ item.group_id }}"
+  with_items:
+  - "{{ group_list }}"
+  tags: os
+
+- name: create User
+  user:
+    name: "{{ item.user_name }}"
+    uid: "{{ item.user_id }}"
+    group: "{{ item.group_id }}"
+    state: present
+  with_items:
+  - "{{ user_list }}"
+  tags: os
+
+- name: .ssh Directory
+  file:
+    path: "/home/{{ item.user_name }}/.ssh"
+    state: directory
+    owner: "{{ item.user_name }}"
+    group: "{{ item.group_name }}"
+    mode: "0700"
+  with_items:
+  - "{{ user_list }}"
+  tags: os
+
+- name: create key pair
+  openssh_keypair:
+    path: "/home/{{ item.user_name }}/.ssh/{{ item.user_name }}.pem"
+    owner: "{{ item.user_name }}"
+    group: "{{ item.group_name }}"
+    mode: "0600"
+    type: "rsa"
+    state: present
+  with_items:
+  - "{{ user_list }}"
+  tags: os
+
+- name: rename public ssh key
+  copy:
+    src: "/home/{{ item.user_name }}/.ssh/{{ item.user_name }}.pem.pub"
+    dest: "/home/{{ item.user_name }}/.ssh/authorized_keys"
+    owner: "{{ item.user_name }}"
+    group: "{{ item.group_name }}"
+    mode: "0600"
+    remote_src: yes
+  with_items:
+  - "{{ user_list }}"
+  tags: os

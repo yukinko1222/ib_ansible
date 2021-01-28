@@ -1,0 +1,7 @@
+- name: Copy logrotate Configuration
+  template:
+    src: logrotate.conf
+    dest: /etc/logrotate.conf
+    force: yes
+    mode:  '0644'
+  tags: os
