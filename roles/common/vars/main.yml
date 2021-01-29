@@ -2,7 +2,7 @@ group_list:
   - { group_name: 'test', group_id: '4000'}
 
 user_list:
-  - { user_name: 'user01', user_id: '4000', group_name: 'tess', group_id: '4000'}
+  - { user_name: 'user01', user_id: '4000', group_name: 'test', group_id: '4000'}
   - { user_name: 'user02', user_id: '4001', group_name: 'test', group_id: '4000'}
 
 date: "{{ lookup('pipe','date +%Y%m%d%H%M') }}"
